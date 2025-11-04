@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'card.dart';
+import 'calculator.dart';
 
 void main() {
   runApp(const MyApp());
@@ -46,7 +47,7 @@ class _ProfileInfo extends State<ProfileInfo>
     {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => MyClass()),
+        MaterialPageRoute(builder: (context) => Calculator()),
       );
       
     }

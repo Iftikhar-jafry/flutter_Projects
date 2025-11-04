@@ -9,14 +9,78 @@ class MyClass extends StatefulWidget
 }
 class _MyClassState extends State<MyClass>
 {
-  Map <String,String> data = {
+  List  cardValues=[
+    {
     'Name': 'IFTIKHAR HUSSAIN JAFFARI',
     'F/Name': 'MUHAMMAD IBRAHIM',
     'Course': 'BS-CS(AFTERNOON)',
     'Dept': 'Computer Science',
     'Sys ID': 'NUML-S22-14260',
-    'Valid till': 'NUML123456',
+    'Valid till': 'Jan/2026',
+    'Image': 'assets/images/mypic.jpg',
+  },
+  {
+    'Name': 'Hammad Ishaq',
+    'F/Name': 'MUHAMMAD ISHAQ',
+    'Course': 'BS-CS(AFTERNOON)',
+    'Dept': 'Computer Science',
+    'Sys ID': 'NUML-S22-14260',
+    'Valid till': 'Jan/2026',
+    'Image': 'assets/images/hammad.jpg',
+  },
+  {
+    'Name': 'Ihsan ur Rehman',
+    'F/Name': 'Sardar Munuwar',
+    'Course': 'BS-CS(AFTERNOON)',
+    'Dept': 'Computer Science',
+    'Sys ID': 'NUML-S22-14260',
+    'Valid till': 'Jan/2026',
+    'Image': 'assets/images/ihsan.jpg',
+  },
+  {
+    'Name': 'Ameer Mauvia',
+    'F/Name': '......',
+    'Course': 'BS-CS(AFTERNOON)',
+    'Dept': 'Computer Science',
+    'Sys ID': 'NUML-S22-14260',
+    'Valid till': 'Jan/2026',
+    'Image': 'assets/images/mavi.jpg',
+  },
+  {
+    'Name': 'Hassaan Khan',
+    'F/Name': 'Khan',
+    'Course': 'BS-CS(AFTERNOON)',
+    'Dept': 'Computer Science',
+    'Sys ID': 'NUML-S22-14260',
+    'Valid till': 'Jan/2026',
+    'Image': 'assets/images/hassaan.jpg',
+  },
+  {
+    'Name': 'Sami Ur Rehman',
+    'F/Name': '.............',
+    'Course': 'BS-CS(AFTERNOON)',
+    'Dept': 'Computer Science',
+    'Sys ID': 'NUML-S22-14260',
+    'Valid till': 'Jan/2026',
+    'Image': 'assets/images/sami.jpg',
+  },
+
+  ];
+  Map <String,String> data =   {
+    'Name': 'IFTIKHAR HUSSAIN JAFFARI',
+    'F/Name': 'MUHAMMAD IBRAHIM',
+    'Course': 'BS-CS(AFTERNOON)',
+    'Dept': 'Computer Science',
+    'Sys ID': 'NUML-S22-14260',
+    'Valid till': 'Jan/2026',
+    'Image': 'assets/images/myPic.jpg',
   };
+
+  void getData(Map<String,String> newData){
+    setState(() {
+      data=newData;
+    });
+  }
 
 
   @override
@@ -38,7 +102,30 @@ class _MyClassState extends State<MyClass>
         
       ),
       body: Center(
-        child: SizedBox(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SizedBox(
+              width: 600,
+              height: 400,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: cardValues.map((data){
+                 return Column(
+                children: [ 
+                  SizedBox(
+                    width: 180,
+                     child: ElevatedButton(onPressed: (){
+                      getData(data.cast<String,String>());
+                     }, child: Text(data['Name'])),
+                  ),
+                  SizedBox(height: 10,),
+                ],
+                 ); 
+              }).toList(),
+              )
+            ),
+        SizedBox(
           width: 600,
           height: 400,
           child:Stack(
@@ -106,21 +193,21 @@ class _MyClassState extends State<MyClass>
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                  Text("$data['Name']",style: TextStyle(fontSize: 17,fontWeight: FontWeight.w700),),
+                                  Text("${data['Name']}",style: TextStyle(fontSize: 17,fontWeight: FontWeight.w700),),
                                   SizedBox(height: 5,),
-                                  Text('MUHAMMAD IBRAHIM',style: TextStyle(fontSize: 17,fontWeight: FontWeight.w700),),
+                                  Text('${data['F/Name']}',style: TextStyle(fontSize: 17,fontWeight: FontWeight.w700),),
                                   SizedBox(height: 5,),
-                                  Text('BS-CS(AFTERNOON)',style: TextStyle(fontSize: 17,fontWeight: FontWeight.w700),),
+                                  Text('${data['Course']}',style: TextStyle(fontSize: 17,fontWeight: FontWeight.w700),),
                                   SizedBox(height: 5,),
-                                  Text('Computer Science',style: TextStyle(fontSize: 17,fontWeight: FontWeight.w700),),
+                                  Text('${data['Dept']}',style: TextStyle(fontSize: 17,fontWeight: FontWeight.w700),),
                                   SizedBox(height: 5,),
-                                  Text('NUML-S22-14260',style: TextStyle(fontSize: 17,fontWeight: FontWeight.w700),),
+                                  Text('${data['Sys ID']}',style: TextStyle(fontSize: 17,fontWeight: FontWeight.w700),),
                                   SizedBox(height: 5,),
-                                  Text('NUML123456',style: TextStyle(fontSize: 17,fontWeight: FontWeight.w700),),
+                                  Text('${data['Valid till']}',style: TextStyle(fontSize: 17,fontWeight: FontWeight.w700),),
                                 ],),
                               ),
                               SizedBox(
-                                child: Image.asset('assets/images/myPic.jpg' , width: 150,height: 150,),
+                                child: Image.asset('${data['Image']}' , width: 150,height: 150,),
                               )
                             ],
                         ),
@@ -153,6 +240,8 @@ class _MyClassState extends State<MyClass>
         ],
         )
         ),
+        ]
+      ),
       ),
       )
     );
